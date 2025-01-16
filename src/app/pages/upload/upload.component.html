@@ -1,14 +1,56 @@
-<div class="h-screen p-4 w-full bg-white text-black">
-  <div class="w-full border h-[40vh] rounded-lg flex justify-center items-center">
+<div class="font-poppins h-screen flex flex-col space-y-4 p-4 w-full bg-white text-black">
+  <div
+    class="w-full border h-[40vh] rounded-lg flex justify-center items-center"
+  >
     <div class="flex flex-col justify-center items-center">
       <div class="animate-bounce">
-        <lucide-icon [name]="icons.Cloudy" color="black" size="80"></lucide-icon>
+        <lucide-icon
+          [name]="icons.Cloudy"
+          color="black"
+          size="80"
+        ></lucide-icon>
       </div>
-      <div 
-        class="px-2 py-2 bg-blue-500 w-fit font-semibold rounded-xl"
-        (click)="openFileExplorer('pdf')"
-      >Upload File</div>
+      <div
+        class="px-2 py-2 bg-blue-500 w-fit font-medium rounded-xl cursor-pointer"
+        (click)="openFileExplorer()"
+      >
+        Upload File
+      </div>
     </div>
   </div>
-  <div></div>
+  <div class="flex w-full h-[55vh] justify-between">
+    <div class="w-[48%] p-4 rounded-lg border">
+      <div class="flex justify-between">
+        <div
+          class="px-2 py-2 bg-blue-500 w-fit font-medium rounded-xl cursor-pointer"
+          (click)="analyze()"
+        >
+          Analyse Documents
+        </div>
+      </div>
+      <div class="py-2 overflow-y-scroll">
+        @for (file of fileList; track $index) {
+          <div>
+            <p>{{ file }}</p>
+          </div>
+        }@empty {
+          <p>Uploaded files</p>
+        }
+      </div>
+    </div>
+    <div class="w-[48%] p-4 border rounded-lg overflow-y-scroll spacey-4">
+      <h3>Analysis Results</h3>
+        <!-- <div class="result-item">
+        </div> -->
+        @for (result of results; track $index) {
+          <div [ngClass]="'border p-2 rounded-lg mb-2' + getMatchClass(result.similarity)">
+            <h4>Match Found: {{ result.matchType }}</h4>
+            <p>Similarity: {{ result.similarity.toFixed(2) }}%</p>
+            <p>Between: {{ result.text1 }} and {{ result.text2 }}</p>
+          </div>
+        }@empty {
+          <p>No analysis yet</p>
+        }  
+    </div>
+  </div>
 </div>

@@ -3,6 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { LucideAngularModule, Cloudy } from 'lucide-angular'
 import * as pdfjsLib from 'pdfjs-dist';
 import mammoth from 'mammoth';
+import { CommonModule } from '@angular/common';
 
 interface ComparisonResult {
   text1: string;
@@ -15,7 +16,7 @@ interface ComparisonResult {
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [ ButtonModule, LucideAngularModule ],
+  imports: [ ButtonModule, LucideAngularModule, CommonModule ],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
 })
@@ -26,7 +27,7 @@ export class UploadComponent {
 
   readonly icons = { Cloudy }
 
-  openFileExplorer(fileType: 'image' | 'pdf') {
+  openFileExplorer() {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.txt,.doc,.docx,.pdf';
