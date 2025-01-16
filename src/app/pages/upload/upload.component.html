@@ -43,7 +43,7 @@
         <!-- <div class="result-item">
         </div> -->
         @for (result of results; track $index) {
-          <div [ngClass]="'border p-2 rounded-lg mb-2' + getMatchClass(result.similarity)">
+          <div [ngClass]="'border p-2 rounded-lg mb-2 ' + getMatchClass(result.similarity)">
             <h4>Match Found: {{ result.matchType }}</h4>
             <p>Similarity: {{ result.similarity.toFixed(2) }}%</p>
             <p>Between: {{ result.text1 }} and {{ result.text2 }}</p>
