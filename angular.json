@@ -16,6 +16,7 @@
             "outputPath": "dist/plagiarism",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "allowedCommonJsDependencies": ["pdfjs-dist", "mammoth"],
             "polyfills": [
               "zone.js"
             ],
@@ -38,8 +39,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",

@@ -1,12 +1,11 @@
 import { Routes } from '@angular/router';
-import { UploadComponent } from './pages/upload/upload.component';
 import { ResultComponent } from './pages/result/result.component';
-import { PlagiarismDetectionComponent } from './plagiarism-detection/plagiarism-detection.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: UploadComponent
+    loadComponent : () =>
+      import('./pages/upload/upload.component').then(m => m.UploadComponent)
   },
   {
     path: 'result',
@@ -14,6 +13,7 @@ export const routes: Routes = [
   },
   {
       path: 'test',
-      component: PlagiarismDetectionComponent
+      loadComponent : () =>
+        import('./plagiarism-detection/plagiarism-detection.component').then(m => m.PlagiarismDetectionComponent)
   }
 ];
